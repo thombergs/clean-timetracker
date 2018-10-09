@@ -1,4 +1,4 @@
-package io.reflectoring.cleantimetracker.project.adapter.html;
+package io.reflectoring.cleantimetracker.project.adapter.html.listprojects;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,29 +8,29 @@ import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProjectModelMapper {
+class ListProjectModelMapper {
 
-  public ProjectModel toModel(Project domainObject) {
-    return ProjectModel.builder()
+  ListProjectModel toModel(Project domainObject) {
+    return ListProjectModel.builder()
             .id(domainObject.getId().getValue())
             .name(domainObject.getName())
             .build();
   }
 
-  public List<ProjectModel> toModels(List<Project> domainObjects) {
+  List<ListProjectModel> toModels(List<Project> domainObjects) {
     return domainObjects.stream()
             .map(this::toModel)
             .collect(Collectors.toList());
   }
 
-  public Project toDomainObject(ProjectModel model) {
+  Project toDomainObject(ListProjectModel model) {
     return Project.builder()
             .id(ProjectId.of(model.getId()))
             .name(model.getName())
             .build();
   }
 
-  public List<Project> toDomainObjects(List<ProjectModel> models) {
+  List<Project> toDomainObjects(List<ListProjectModel> models) {
     return models.stream()
             .map(this::toDomainObject)
             .collect(Collectors.toList());

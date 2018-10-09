@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class CreateProjectController {
+class CreateProjectController {
 
   private CreateProjectUseCase createProjectUseCase;
 
-  public CreateProjectController(CreateProjectUseCase createProjectUseCase) {
+  CreateProjectController(CreateProjectUseCase createProjectUseCase) {
     this.createProjectUseCase = createProjectUseCase;
   }
 
   @GetMapping("/projects/create")
-  public String displayCreateProjectForm(Model model) {
+  String displayCreateProjectForm(Model model) {
     model.addAttribute("project", new CreateProjectModel());
     return "createProject.html";
   }

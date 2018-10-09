@@ -1,4 +1,4 @@
-package io.reflectoring.cleantimetracker.project.adapter.html;
+package io.reflectoring.cleantimetracker.project.adapter.html.listprojects;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjectModel {
+class ListProjectModel {
 
   private Long id;
 
