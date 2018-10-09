@@ -8,13 +8,13 @@ import io.reflectoring.cleantimetracker.project.domain.usecase.listprojects.List
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProjectPersistence implements CreateProjectPort, ListProjectsPort {
+class ProjectPersistence implements CreateProjectPort, ListProjectsPort {
 
   private ProjectRepository projectRepository;
 
   private ProjectEntityMapper projectEntityMapper;
 
-  public ProjectPersistence(ProjectRepository projectRepository, ProjectEntityMapper projectEntityMapper) {
+  ProjectPersistence(ProjectRepository projectRepository, ProjectEntityMapper projectEntityMapper) {
     this.projectRepository = projectRepository;
     this.projectEntityMapper = projectEntityMapper;
   }

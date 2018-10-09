@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import io.reflectoring.cleantimetracker.project.domain.entity.ProjectStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class ProjectEntity {
+class ProjectEntity {
 
   @Id
   @GeneratedValue
@@ -23,4 +24,7 @@ public class ProjectEntity {
 
   @Column
   private String name;
+
+  @Column
+  private ProjectStatus status;
 }

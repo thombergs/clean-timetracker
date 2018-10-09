@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class TaskEntity {
+class TaskEntity {
 
   @Id
   @GeneratedValue
