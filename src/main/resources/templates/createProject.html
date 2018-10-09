@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<form action="#" th:action="@{/projects}" th:object="${project}" method="post">
+    <label>
+        Projektname:
+        <input type="text" th:field="*{name}"/>
+    </label>
+    <input type="submit" value="Projekt anlegen"/>
+</form>
+
+</html>
