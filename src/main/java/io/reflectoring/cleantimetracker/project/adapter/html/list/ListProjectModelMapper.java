@@ -1,4 +1,4 @@
-package io.reflectoring.cleantimetracker.project.adapter.html.listprojects;
+package io.reflectoring.cleantimetracker.project.adapter.html.list;
 
 import java.util.List;
 import java.util.stream.Collectors;

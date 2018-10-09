@@ -1,4 +1,4 @@
-package io.reflectoring.cleantimetracker.project.adapter.html.listprojects;
+package io.reflectoring.cleantimetracker.project.adapter.html.list;
 
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectStatus;
 import lombok.AllArgsConstructor;
@@ -17,5 +17,9 @@ class ListProjectModel {
   private String name;
 
   private ProjectStatus status;
+
+  public boolean isActive() {
+    return this.status == ProjectStatus.ACTIVE;
+  }
 
 }

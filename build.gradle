@@ -17,7 +17,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'io.reflectoring'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+sourceCompatibility = 11
 
 repositories {
 	mavenCentral()
@@ -31,6 +31,8 @@ dependencies {
 	runtimeOnly('com.h2database:h2')
 	compileOnly('org.projectlombok:lombok')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	compile('javax.xml.bind:jaxb-api:2.3.1')
+	compile('org.javassist:javassist:3.23.1-GA')
 }
 
 bootRun {

@@ -1,4 +1,4 @@
-package io.reflectoring.cleantimetracker.project.adapter.html.createproject;
+package io.reflectoring.cleantimetracker.project.adapter.html.create;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

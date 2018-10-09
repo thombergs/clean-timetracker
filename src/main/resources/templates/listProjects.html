@@ -8,6 +8,7 @@
         <th>Nummer</th>
         <th>Name</th>
         <th>Status</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -15,6 +16,14 @@
         <td th:text="${project.id}"></td>
         <td th:text="${project.name}"></td>
         <td th:text="${project.status}"></td>
+        <td>
+            <form th:if="${!project.isActive()}" action="#" th:action="@{/projects/{projectId}/activate(projectId=${project.id})}" method="post">
+                <input type="submit" value="Activate"/>
+            </form>
+            <form th:if="${project.isActive()}" action="#" th:action="@{/projects/{projectId}/deactivate(projectId=${project.id})}" method="post">
+                <input type="submit" value="Deactivate"/>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>

@@ -1,9 +1,9 @@
-package io.reflectoring.cleantimetracker.project.adapter.html.listprojects;
+package io.reflectoring.cleantimetracker.project.adapter.html.list;
 
 import java.util.List;
 
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
-import io.reflectoring.cleantimetracker.project.domain.usecase.listprojects.ListProjectsUseCase;
+import io.reflectoring.cleantimetracker.project.domain.usecase.list.ListProjectsUseCase;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
