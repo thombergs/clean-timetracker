@@ -13,7 +13,7 @@ public class ProjectEntityMapper {
 
   public ProjectEntity toEntity(Project domainObject) {
     return ProjectEntity.builder()
-            .id(domainObject.getId().getValue())
+            .id(domainObject.getId() != null ? domainObject.getId().getValue() : null)
             .name(domainObject.getName())
             .build();
   }

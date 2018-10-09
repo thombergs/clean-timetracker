@@ -1,8 +1,7 @@
-package io.reflectoring.cleantimetracker.project.adapter.html;
+package io.reflectoring.cleantimetracker.project.adapter.html.createproject;
 
 import javax.validation.Valid;
 
-import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 import io.reflectoring.cleantimetracker.project.domain.usecase.createproject.CreateProjectUseCase;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,24 +14,20 @@ public class CreateProjectController {
 
   private CreateProjectUseCase createProjectUseCase;
 
-  private ProjectModelMapper projectModelMapper;
-
-  public CreateProjectController(CreateProjectUseCase createProjectUseCase, ProjectModelMapper projectModelMapper) {
+  public CreateProjectController(CreateProjectUseCase createProjectUseCase) {
     this.createProjectUseCase = createProjectUseCase;
-    this.projectModelMapper = projectModelMapper;
   }
 
   @GetMapping("/projects/create")
   public String displayCreateProjectForm(Model model) {
-    model.addAttribute("project", new ProjectModel());
+    model.addAttribute("project", new CreateProjectModel());
     return "createProject.html";
   }
 
 
   @PostMapping("/projects")
-  public String createProject(@Valid @ModelAttribute("project") ProjectModel projectModel, Model model) {
-    Project project = projectModelMapper.toDomainObject(projectModel);
-    createProjectUseCase.createProject(project);
+  public String createProject(@Valid @ModelAttribute("project") CreateProjectModel projectModel) {
+    createProjectUseCase.createProject(projectModel.getName());
     return "redirect:/projects/list";
   }
 

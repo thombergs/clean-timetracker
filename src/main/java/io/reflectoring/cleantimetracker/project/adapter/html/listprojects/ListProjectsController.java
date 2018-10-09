@@ -1,7 +1,9 @@
-package io.reflectoring.cleantimetracker.project.adapter.html;
+package io.reflectoring.cleantimetracker.project.adapter.html.listprojects;
 
 import java.util.List;
 
+import io.reflectoring.cleantimetracker.project.adapter.html.ProjectModel;
+import io.reflectoring.cleantimetracker.project.adapter.html.ProjectModelMapper;
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 import io.reflectoring.cleantimetracker.project.domain.usecase.listprojects.ListProjectsUseCase;
 import org.springframework.stereotype.Controller;
