@@ -1,5 +1,7 @@
 package io.reflectoring.cleantimetracker.project.domain.usecase.addtask;
 
+import java.util.Optional;
+
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
 import io.reflectoring.cleantimetracker.project.domain.entity.Task;
@@ -33,11 +35,8 @@ public class AddTaskUseCase {
   }
 
   private Project findProjectOrFail(ProjectId projectId) {
-    Project project = queryProjectsPort.findOne(projectId);
-    if (project == null) {
-      throw new ProjectNotFoundException(projectId);
-    }
-    return project;
+    Optional<Project> project = queryProjectsPort.findOne(projectId);
+    return project.orElseThrow(() -> new ProjectNotFoundException(projectId));
   }
 
 }

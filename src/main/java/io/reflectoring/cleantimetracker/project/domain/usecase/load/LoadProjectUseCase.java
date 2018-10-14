@@ -1,5 +1,7 @@
 package io.reflectoring.cleantimetracker.project.domain.usecase.load;
 
+import java.util.Optional;
+
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
 import io.reflectoring.cleantimetracker.project.domain.usecase.ProjectNotFoundException;
@@ -16,11 +18,12 @@ public class LoadProjectUseCase {
   }
 
   public Project loadProject(ProjectId projectId) {
-    Project project = queryPort.findOne(projectId);
-    if (project == null) {
+    Optional<Project> optionalProject = queryPort.findOne(projectId);
+    if (optionalProject.isPresent()) {
+      return optionalProject.get();
+    } else {
       throw new ProjectNotFoundException(projectId);
     }
-    return project;
   }
 
 }

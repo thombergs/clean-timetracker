@@ -1,5 +1,7 @@
 package io.reflectoring.cleantimetracker.project.domain.usecase.addtask;
 
+import java.util.Optional;
+
 import io.reflectoring.cleantimetracker.MockitoExtension;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
 import io.reflectoring.cleantimetracker.project.domain.entity.Task;
@@ -29,7 +31,7 @@ class AddTaskUseCaseTest {
   @Test
   void whenProjectNotFound_thenFails() {
     ProjectId projectId = ProjectId.of(42L);
-    when(queryProjectsPort.findOne(projectId)).thenReturn(null);
+    when(queryProjectsPort.findOne(projectId)).thenReturn(Optional.empty());
     assertThatThrownBy(() -> {
       usecase.addTask("My Task", true, projectId);
     }).isInstanceOf(ProjectNotFoundException.class);

@@ -1,8 +1,11 @@
 package io.reflectoring.cleantimetracker.project.domain.usecase.activate;
 
+import java.util.Optional;
+
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectStatus;
+import io.reflectoring.cleantimetracker.project.domain.usecase.ProjectNotFoundException;
 import io.reflectoring.cleantimetracker.project.domain.usecase.QueryProjectsPort;
 import io.reflectoring.cleantimetracker.project.domain.usecase.SaveProjectPort;
 import org.springframework.stereotype.Service;
@@ -21,14 +24,20 @@ public class ActivateProjectUseCase {
   }
 
   public void activateProject(ProjectId projectId) {
-    Project project = queryProjectsPort.findOne(projectId);
-    project.setStatus(ProjectStatus.ACTIVE);
-    saveProjectPort.saveProject(project);
+    Optional<Project> optionalProject = queryProjectsPort.findOne(projectId);
+    optionalProject.ifPresent((project) -> {
+      project.setStatus(ProjectStatus.ACTIVE);
+      saveProjectPort.saveProject(project);
+    });
+    throw new ProjectNotFoundException(projectId);
   }
 
   public void deactivateProject(ProjectId projectId) {
-    Project project = queryProjectsPort.findOne(projectId);
-    project.setStatus(ProjectStatus.INACTIVE);
-    saveProjectPort.saveProject(project);
+    Optional<Project> optionalProject = queryProjectsPort.findOne(projectId);
+    optionalProject.ifPresent((project) -> {
+      project.setStatus(ProjectStatus.INACTIVE);
+      saveProjectPort.saveProject(project);
+    });
+    throw new ProjectNotFoundException(projectId);
   }
 }

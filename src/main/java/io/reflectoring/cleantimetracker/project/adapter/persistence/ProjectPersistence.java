@@ -36,11 +36,9 @@ class ProjectPersistence implements CreateProjectPort, QueryProjectsPort, SavePr
   }
 
   @Override
-  public Project findOne(ProjectId projectId) {
-    Optional<ProjectEntity> project = projectRepository.findById(projectId.getValue());
-    return project
-            .map(projectEntity -> projectEntityMapper.toDomainObject(projectEntity))
-            .orElse(null);
+  public Optional<Project> findOne(ProjectId projectId) {
+    Optional<ProjectEntity> optionalProject = projectRepository.findById(projectId.getValue());
+    return optionalProject.map(projectEntity -> projectEntityMapper.toDomainObject(projectEntity));
   }
 
   @Override
