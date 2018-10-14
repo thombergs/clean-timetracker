@@ -15,12 +15,23 @@
     <tr>
         <th>Name</th>
         <th>Invoiceable</th>
+        <th>Status</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="task : ${project.getTasks()}">
         <td th:text="${task.name}"></td>
         <td th:text="${task.invoiceable}"></td>
+        <td th:text="${task.status}"></td>
+        <td>
+            <form th:if="${!task.isActive()}" action="#" th:action="@{/projects/{projectId}/tasks/{taskId}/activate(projectId=${project.id}, taskId=${task.id})}" method="post">
+                <input type="submit" value="Activate"/>
+            </form>
+            <form th:if="${task.isActive()}" action="#" th:action="@{/projects/{projectId}/tasks/{taskId}/deactivate(projectId=${project.id}, taskId=${task.id})}" method="post">
+                <input type="submit" value="Deactivate"/>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>

@@ -1,11 +1,14 @@
 package io.reflectoring.cleantimetracker.project.domain.usecase.create;
 
+import javax.transaction.Transactional;
+
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectStatus;
 import io.reflectoring.cleantimetracker.project.domain.usecase.CreateProjectPort;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class CreateProjectUseCase {
 
   private final CreateProjectPort createProjectPort;

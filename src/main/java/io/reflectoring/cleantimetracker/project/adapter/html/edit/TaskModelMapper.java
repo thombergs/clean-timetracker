@@ -14,6 +14,7 @@ class TaskModelMapper {
             .id(domainObject.getId().getValue())
             .invoiceable(domainObject.isInvoiceable())
             .name(domainObject.getName())
+            .status(domainObject.getStatus())
             .build();
   }
 

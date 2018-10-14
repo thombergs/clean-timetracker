@@ -4,20 +4,20 @@ import java.util.List;
 
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
 import io.reflectoring.cleantimetracker.project.domain.entity.Task;
-import io.reflectoring.cleantimetracker.project.domain.usecase.ListTasksPort;
+import io.reflectoring.cleantimetracker.project.domain.usecase.QueryTasksPort;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ListTasksUseCase {
 
-  private ListTasksPort listTasksPort;
+  private QueryTasksPort queryTasksPort;
 
-  public ListTasksUseCase(ListTasksPort listTasksPort) {
-    this.listTasksPort = listTasksPort;
+  public ListTasksUseCase(QueryTasksPort queryTasksPort) {
+    this.queryTasksPort = queryTasksPort;
   }
 
   public List<Task> listTasksForProject(ProjectId projectId) {
-    return listTasksPort.listTasksForProject(projectId);
+    return queryTasksPort.listTasksForProject(projectId);
   }
 
 }

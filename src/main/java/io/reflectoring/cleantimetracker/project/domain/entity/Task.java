@@ -15,4 +15,7 @@ public class Task {
 
   private Project project;
 
+  @Builder.Default
+  private TaskStatus status = TaskStatus.ACTIVE;
+
 }

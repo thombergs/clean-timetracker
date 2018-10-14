@@ -1,5 +1,6 @@
 package io.reflectoring.cleantimetracker.project.adapter.html.edit;
 
+import io.reflectoring.cleantimetracker.project.domain.entity.TaskStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,5 +17,11 @@ class TaskModel {
   private String name;
 
   private Boolean invoiceable;
+
+  private TaskStatus status;
+
+  public boolean isActive() {
+    return this.status == TaskStatus.ACTIVE;
+  }
 
 }

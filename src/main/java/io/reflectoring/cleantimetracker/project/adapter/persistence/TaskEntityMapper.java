@@ -29,6 +29,7 @@ class TaskEntityMapper {
             .name(domainObject.getName())
             .project(projectReference(domainObject.getProject().getId()))
             .invoiceable(domainObject.isInvoiceable())
+            .status(domainObject.getStatus())
             .build();
   }
 
@@ -44,6 +45,7 @@ class TaskEntityMapper {
             .name(entity.getName())
             .project(projectEntityMapper.toDomainObject(entity.getProject()))
             .invoiceable(entity.getInvoiceable())
+            .status(entity.getStatus())
             .build();
   }
 

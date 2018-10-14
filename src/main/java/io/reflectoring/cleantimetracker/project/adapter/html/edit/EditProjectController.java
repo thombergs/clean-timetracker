@@ -5,7 +5,9 @@ import java.util.List;
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
 import io.reflectoring.cleantimetracker.project.domain.entity.Task;
+import io.reflectoring.cleantimetracker.project.domain.entity.TaskId;
 import io.reflectoring.cleantimetracker.project.domain.usecase.addtask.AddTaskUseCase;
+import io.reflectoring.cleantimetracker.project.domain.usecase.changetaskstatus.ChangeTaskStatusUseCase;
 import io.reflectoring.cleantimetracker.project.domain.usecase.listtasks.ListTasksUseCase;
 import io.reflectoring.cleantimetracker.project.domain.usecase.load.LoadProjectUseCase;
 import org.springframework.stereotype.Controller;
@@ -26,11 +28,14 @@ class EditProjectController {
 
   private AddTaskUseCase addTaskUseCase;
 
-  EditProjectController(ListTasksUseCase listTasksUseCase, LoadProjectUseCase loadProjectUseCase, EditProjectModelMapper editProjectModelMapper, AddTaskUseCase addTaskUseCase) {
+  private ChangeTaskStatusUseCase changeTaskStatusUseCase;
+
+  EditProjectController(ListTasksUseCase listTasksUseCase, LoadProjectUseCase loadProjectUseCase, EditProjectModelMapper editProjectModelMapper, AddTaskUseCase addTaskUseCase, ChangeTaskStatusUseCase changeTaskStatusUseCase) {
     this.listTasksUseCase = listTasksUseCase;
     this.loadProjectUseCase = loadProjectUseCase;
     this.editProjectModelMapper = editProjectModelMapper;
     this.addTaskUseCase = addTaskUseCase;
+    this.changeTaskStatusUseCase = changeTaskStatusUseCase;
   }
 
   @GetMapping("/projects/{id}")
@@ -48,6 +53,18 @@ class EditProjectController {
                  @ModelAttribute("addTaskForm") AddTaskForm form) {
     addTaskUseCase.addTask(form.getName(), form.isInvoiceable(), ProjectId.of(projectId));
     return "redirect:/projects/{id}";
+  }
+
+  @PostMapping("/projects/{projectId}/tasks/{taskId}/activate")
+  String activateTask(@PathVariable("taskId") Long taskId) {
+    changeTaskStatusUseCase.activateTask(TaskId.of(taskId));
+    return "redirect:/projects/{projectId}";
+  }
+
+  @PostMapping("/projects/{projectId}/tasks/{taskId}/deactivate")
+  String deactivateTask(@PathVariable("taskId") Long taskId) {
+    changeTaskStatusUseCase.deactivateTask(TaskId.of(taskId));
+    return "redirect:/projects/{projectId}";
   }
 
 

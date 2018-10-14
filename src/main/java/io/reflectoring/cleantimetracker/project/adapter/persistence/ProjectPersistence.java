@@ -5,13 +5,14 @@ import java.util.Optional;
 
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
+import io.reflectoring.cleantimetracker.project.domain.entity.ProjectStatus;
 import io.reflectoring.cleantimetracker.project.domain.usecase.CreateProjectPort;
 import io.reflectoring.cleantimetracker.project.domain.usecase.QueryProjectsPort;
-import io.reflectoring.cleantimetracker.project.domain.usecase.SaveProjectPort;
+import io.reflectoring.cleantimetracker.project.domain.usecase.UpdateProjectPort;
 import org.springframework.stereotype.Service;
 
 @Service
-class ProjectPersistence implements CreateProjectPort, QueryProjectsPort, SaveProjectPort {
+class ProjectPersistence implements CreateProjectPort, QueryProjectsPort, UpdateProjectPort {
 
   private ProjectRepository projectRepository;
 
@@ -42,9 +43,7 @@ class ProjectPersistence implements CreateProjectPort, QueryProjectsPort, SavePr
   }
 
   @Override
-  public Project saveProject(Project project) {
-    ProjectEntity entity = projectEntityMapper.toEntity(project);
-    ProjectEntity savedEntity = projectRepository.save(entity);
-    return projectEntityMapper.toDomainObject(savedEntity);
+  public void changeStatus(Project project, ProjectStatus status) {
+    projectRepository.updateStatus(project.getId().getValue(), status);
   }
 }

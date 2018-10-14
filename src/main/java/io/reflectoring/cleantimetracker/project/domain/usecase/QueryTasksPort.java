@@ -1,12 +1,16 @@
 package io.reflectoring.cleantimetracker.project.domain.usecase;
 
 import java.util.List;
+import java.util.Optional;
 
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
 import io.reflectoring.cleantimetracker.project.domain.entity.Task;
+import io.reflectoring.cleantimetracker.project.domain.entity.TaskId;
 
-public interface ListTasksPort {
+public interface QueryTasksPort {
 
   List<Task> listTasksForProject(ProjectId projectId);
+
+  Optional<Task> findOne(TaskId taskId);
 
 }
