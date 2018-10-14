@@ -23,6 +23,7 @@
             <form th:if="${project.isActive()}" action="#" th:action="@{/projects/{projectId}/deactivate(projectId=${project.id})}" method="post">
                 <input type="submit" value="Deactivate"/>
             </form>
+            <a th:href="@{/projects/{id}(id=${project.id})}">Details</a>
         </td>
     </tr>
     </tbody>

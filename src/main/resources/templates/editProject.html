@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<h1>Project Details: <span th:text="${project.name}">PROJECT NAME</span></h1>
+
+<a th:href="@{/projects/list}">Back to projects list</a>
+
+<p>Project ID: <span th:text="${project.id}">ID</span></p>
+<p>Project status: <span th:text="${project.status}">STATUS</span></p>
+
+<h2>Tasks</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Invoiceable</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${project.getTasks()}">
+        <td th:text="${task.name}"></td>
+        <td th:text="${task.invoiceable}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Add Task</h2>
+<form action="#" th:action="@{/projects/{id}/add-task(id=${project.id})}" th:object="${addTaskForm}" method="post">
+    <label>
+        Name:
+        <input type="text" th:field="*{name}"/>
+    </label>
+    <label>
+        Invoiceable:
+        <input type="checkbox" th:field="*{invoiceable}" th:value="invoiceable"/>
+    </label>
+    <input type="submit" value="Add Task"/>
+</form>
+
+</html>

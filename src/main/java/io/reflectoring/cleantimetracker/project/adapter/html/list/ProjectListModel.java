@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-class ListProjectModel {
+class ProjectListModel {
 
   private Long id;
 

@@ -13,18 +13,18 @@ class ListProjectsController {
 
   private ListProjectsUseCase listProjectsUseCase;
 
-  private ListProjectModelMapper projectModelMapper;
+  private ProjectListModelMapper projectListModelMapper;
 
-  ListProjectsController(ListProjectsUseCase listProjectsUseCase, ListProjectModelMapper projectModelMapper) {
+  ListProjectsController(ListProjectsUseCase listProjectsUseCase, ProjectListModelMapper projectListModelMapper) {
     this.listProjectsUseCase = listProjectsUseCase;
-    this.projectModelMapper = projectModelMapper;
+    this.projectListModelMapper = projectListModelMapper;
   }
 
   @GetMapping("/projects/list")
   String displayProjectsList(Model model) {
     List<Project> projects = listProjectsUseCase.listProjects();
-    List<ListProjectModel> projectModels = projectModelMapper.toModels(projects);
-    model.addAttribute("projects", projectModels);
+    List<ProjectListModel> projectListModels = projectListModelMapper.toModels(projects);
+    model.addAttribute("projects", projectListModels);
     return "listProjects.html";
   }
 

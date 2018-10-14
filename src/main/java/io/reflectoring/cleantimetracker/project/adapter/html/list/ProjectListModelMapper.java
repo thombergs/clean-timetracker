@@ -7,17 +7,17 @@ import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 import org.springframework.stereotype.Component;
 
 @Component
-class ListProjectModelMapper {
+class ProjectListModelMapper {
 
-  ListProjectModel toModel(Project domainObject) {
-    return ListProjectModel.builder()
+  ProjectListModel toModel(Project domainObject) {
+    return ProjectListModel.builder()
             .id(domainObject.getId().getValue())
             .name(domainObject.getName())
             .status(domainObject.getStatus())
             .build();
   }
 
-  List<ListProjectModel> toModels(List<Project> domainObjects) {
+  List<ProjectListModel> toModels(List<Project> domainObjects) {
     return domainObjects.stream()
             .map(this::toModel)
             .collect(Collectors.toList());

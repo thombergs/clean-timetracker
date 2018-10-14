@@ -17,7 +17,7 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'io.reflectoring'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 11
+sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
@@ -28,16 +28,23 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
 	implementation('org.springframework.boot:spring-boot-starter-thymeleaf')
 	implementation('org.springframework.boot:spring-boot-starter-web')
+	implementation('javax.xml.bind:jaxb-api:2.3.1')
+	implementation('org.javassist:javassist:3.23.1-GA')
 	runtimeOnly('com.h2database:h2')
-	compileOnly('org.projectlombok:lombok')
+	compileOnly('org.projectlombok:lombok:1.18.2')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
-	compile('javax.xml.bind:jaxb-api:2.3.1')
-	compile('org.javassist:javassist:3.23.1-GA')
+	testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.0.1'
+}
+
+test {
+	useJUnitPlatform()
 }
 
 bootRun {
 	jvmArgs = [
 			"-XX:TieredStopAtLevel=1",
-			"-noverify"
+			"-noverify",
+			"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
 	]
+
 }

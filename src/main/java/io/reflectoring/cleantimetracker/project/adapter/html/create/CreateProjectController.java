@@ -1,7 +1,5 @@
 package io.reflectoring.cleantimetracker.project.adapter.html.create;
 
-import javax.validation.Valid;
-
 import io.reflectoring.cleantimetracker.project.domain.usecase.create.CreateProjectUseCase;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,13 +18,13 @@ class CreateProjectController {
 
   @GetMapping("/projects/create")
   String displayCreateProjectForm(Model model) {
-    model.addAttribute("project", new CreateProjectModel());
+    model.addAttribute("project", new CreateProjectForm());
     return "createProject.html";
   }
 
 
   @PostMapping("/projects")
-  String createProject(@Valid @ModelAttribute("project") CreateProjectModel projectModel) {
+  String createProject(@ModelAttribute("project") CreateProjectForm projectModel) {
     createProjectUseCase.createProject(projectModel.getName());
     return "redirect:/projects/list";
   }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-class CreateProjectModel {
+class CreateProjectForm {
 
   private String name;
 
