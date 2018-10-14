@@ -1,4 +1,4 @@
-package io.reflectoring.cleantimetracker.project.domain.usecase.listtasks;
+package io.reflectoring.cleantimetracker.project.domain.usecase;
 
 import java.util.List;
 

@@ -4,8 +4,8 @@ import java.util.List;
 
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
 import io.reflectoring.cleantimetracker.project.domain.entity.Task;
+import io.reflectoring.cleantimetracker.project.domain.usecase.ListTasksPort;
 import io.reflectoring.cleantimetracker.project.domain.usecase.SaveTaskPort;
-import io.reflectoring.cleantimetracker.project.domain.usecase.listtasks.ListTasksPort;
 import org.springframework.stereotype.Service;
 
 @Service

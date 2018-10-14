@@ -1,4 +1,4 @@
-package io.reflectoring.cleantimetracker.project.domain.usecase.create;
+package io.reflectoring.cleantimetracker.project.domain.usecase;
 
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 
