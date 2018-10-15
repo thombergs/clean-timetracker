@@ -9,7 +9,7 @@ import io.reflectoring.cleantimetracker.project.domain.entity.TaskId;
 import io.reflectoring.cleantimetracker.project.domain.usecase.addtask.AddTaskUseCase;
 import io.reflectoring.cleantimetracker.project.domain.usecase.changetaskstatus.ChangeTaskStatusUseCase;
 import io.reflectoring.cleantimetracker.project.domain.usecase.listtasks.ListTasksUseCase;
-import io.reflectoring.cleantimetracker.project.domain.usecase.load.LoadProjectUseCase;
+import io.reflectoring.cleantimetracker.project.domain.usecase.loadproject.LoadProjectUseCase;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

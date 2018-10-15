@@ -1,4 +1,4 @@
-package io.reflectoring.cleantimetracker.project.domain.usecase.load;
+package io.reflectoring.cleantimetracker.project.domain.usecase.loadproject;
 
 import java.util.Optional;
 
