@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reflectoring.cleantimetracker.timecontext.domain.entity.TimeRecord;
+import io.reflectoring.cleantimetracker.timecontext.domain.entity.TimeRecordId;
+import io.reflectoring.cleantimetracker.timecontext.domain.entity.TimeRecordStatus;
+
 public class TimeRecordTestFactory {
 
   public static List<TimeRecord> defaultRecords(Long... taskIds) {

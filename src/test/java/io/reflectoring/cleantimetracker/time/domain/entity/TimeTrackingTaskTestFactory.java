@@ -3,6 +3,8 @@ package io.reflectoring.cleantimetracker.time.domain.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reflectoring.cleantimetracker.timecontext.domain.entity.TimeTrackingTask;
+
 public class TimeTrackingTaskTestFactory {
 
   public static List<TimeTrackingTask> defaultTasks(Long... taskIds) {

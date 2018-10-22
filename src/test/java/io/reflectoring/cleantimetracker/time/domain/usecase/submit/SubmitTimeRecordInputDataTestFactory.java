@@ -2,6 +2,8 @@ package io.reflectoring.cleantimetracker.time.domain.usecase.submit;
 
 import java.time.LocalDate;
 
+import io.reflectoring.cleantimetracker.timecontext.domain.usecase.submit.SubmitTimeRecordInputData;
+
 class SubmitTimeRecordInputDataTestFactory {
 
   static SubmitTimeRecordInputData eightHours() {
