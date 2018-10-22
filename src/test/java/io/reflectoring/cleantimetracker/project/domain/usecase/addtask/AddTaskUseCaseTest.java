@@ -5,10 +5,10 @@ import java.util.Optional;
 import io.reflectoring.cleantimetracker.MockitoExtension;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
 import io.reflectoring.cleantimetracker.project.domain.entity.Task;
-import io.reflectoring.cleantimetracker.project.domain.usecase.CreateTaskPort;
+import io.reflectoring.cleantimetracker.project.domain.port.driven.persistence.CreateTaskPort;
+import io.reflectoring.cleantimetracker.project.domain.port.driven.persistence.QueryProjectsPort;
 import io.reflectoring.cleantimetracker.project.domain.usecase.ProjectNotFoundException;
-import io.reflectoring.cleantimetracker.project.domain.usecase.ProjectTestData;
-import io.reflectoring.cleantimetracker.project.domain.usecase.QueryProjectsPort;
+import io.reflectoring.cleantimetracker.project.domain.usecase.ProjectTestFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -40,7 +40,7 @@ class AddTaskUseCaseTest {
   @Test
   void whenProjectFound_thenCallsSaveTaskPort() {
     ProjectId projectId = ProjectId.of(42L);
-    when(queryProjectsPort.findOne(projectId)).thenReturn(ProjectTestData.defaultProject());
+    when(queryProjectsPort.findOne(projectId)).thenReturn(ProjectTestFactory.defaultProject());
     usecase.addTask("My Task", true, projectId);
     verify(createTaskPort, times(1)).saveTask(any(Task.class));
   }

@@ -7,9 +7,9 @@ import java.util.Optional;
 import io.reflectoring.cleantimetracker.project.domain.entity.Task;
 import io.reflectoring.cleantimetracker.project.domain.entity.TaskId;
 import io.reflectoring.cleantimetracker.project.domain.entity.TaskStatus;
-import io.reflectoring.cleantimetracker.project.domain.usecase.QueryTasksPort;
+import io.reflectoring.cleantimetracker.project.domain.port.driven.persistence.QueryTasksPort;
+import io.reflectoring.cleantimetracker.project.domain.port.driven.persistence.UpdateTaskPort;
 import io.reflectoring.cleantimetracker.project.domain.usecase.TaskNotFoundException;
-import io.reflectoring.cleantimetracker.project.domain.usecase.UpdateTaskPort;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -7,9 +7,9 @@ import java.util.Optional;
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectId;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectStatus;
+import io.reflectoring.cleantimetracker.project.domain.port.driven.persistence.QueryProjectsPort;
+import io.reflectoring.cleantimetracker.project.domain.port.driven.persistence.UpdateProjectPort;
 import io.reflectoring.cleantimetracker.project.domain.usecase.ProjectNotFoundException;
-import io.reflectoring.cleantimetracker.project.domain.usecase.QueryProjectsPort;
-import io.reflectoring.cleantimetracker.project.domain.usecase.UpdateProjectPort;
 import org.springframework.stereotype.Service;
 
 @Service

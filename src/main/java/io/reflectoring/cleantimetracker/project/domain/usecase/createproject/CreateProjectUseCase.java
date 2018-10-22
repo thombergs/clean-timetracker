@@ -4,7 +4,7 @@ import javax.transaction.Transactional;
 
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
 import io.reflectoring.cleantimetracker.project.domain.entity.ProjectStatus;
-import io.reflectoring.cleantimetracker.project.domain.usecase.CreateProjectPort;
+import io.reflectoring.cleantimetracker.project.domain.port.driven.persistence.CreateProjectPort;
 import org.springframework.stereotype.Service;
 
 @Service

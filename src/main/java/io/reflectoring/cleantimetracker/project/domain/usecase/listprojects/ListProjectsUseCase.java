@@ -3,7 +3,7 @@ package io.reflectoring.cleantimetracker.project.domain.usecase.listprojects;
 import java.util.List;
 
 import io.reflectoring.cleantimetracker.project.domain.entity.Project;
-import io.reflectoring.cleantimetracker.project.domain.usecase.QueryProjectsPort;
+import io.reflectoring.cleantimetracker.project.domain.port.driven.persistence.QueryProjectsPort;
 import org.springframework.stereotype.Service;
 
 @Service
