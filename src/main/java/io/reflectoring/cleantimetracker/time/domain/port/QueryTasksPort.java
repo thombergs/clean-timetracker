@@ -11,4 +11,6 @@ public interface QueryTasksPort {
 
   TimeTrackingTask loadTask(Long taskId);
 
+  List<TimeTrackingTask> listAllTasks();
+
 }

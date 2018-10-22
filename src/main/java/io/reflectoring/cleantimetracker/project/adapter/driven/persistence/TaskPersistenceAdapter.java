@@ -53,6 +53,11 @@ class TaskPersistenceAdapter implements CreateTaskPort, QueryTasksPort, UpdateTa
   }
 
   @Override
+  public List<Task> listAllTasks() {
+    return taskEntityMapper.toDomainObjects(taskEntityRepository.findAll());
+  }
+
+  @Override
   public void changeStatus(Task task, TaskStatus status) {
     taskEntityRepository.updateStatus(task.getId().getValue(), status);
   }

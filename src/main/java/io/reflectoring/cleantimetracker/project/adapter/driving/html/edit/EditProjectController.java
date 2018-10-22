@@ -45,7 +45,7 @@ class EditProjectController {
     EditProjectModel projectModel = editProjectModelMapper.toModel(project, tasks);
     model.addAttribute("project", projectModel);
     model.addAttribute("addTaskForm", new AddTaskForm());
-    return "editProject.html";
+    return "project/editProject.html";
   }
 
   @PostMapping("/projects/{id}/add-task")

@@ -19,14 +19,14 @@ class CreateProjectController {
   @GetMapping("/projects/create")
   String displayCreateProjectForm(Model model) {
     model.addAttribute("project", new CreateProjectForm());
-    return "createProject.html";
+    return "project/createProject.html";
   }
 
 
   @PostMapping("/projects")
   String createProject(@ModelAttribute("project") CreateProjectForm projectModel) {
     createProjectUseCase.createProject(projectModel.getName());
-    return "redirect:/projects/list";
+    return "redirect:/projects";
   }
 
 

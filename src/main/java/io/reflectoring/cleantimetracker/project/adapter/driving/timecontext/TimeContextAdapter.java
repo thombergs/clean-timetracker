@@ -28,4 +28,8 @@ public class TimeContextAdapter {
     return queryTasksPort.findOne(TaskId.of(taskId));
   }
 
+  public List<Task> listAll(){
+    return queryTasksPort.listAllTasks();
+  }
+
 }

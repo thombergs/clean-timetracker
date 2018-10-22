@@ -32,19 +32,19 @@ class ListProjectsController {
     List<Project> projects = listProjectsUseCase.listProjects();
     List<ProjectListModel> projectListModels = projectListModelMapper.toModels(projects);
     model.addAttribute("projects", projectListModels);
-    return "listProjects.html";
+    return "project/listProjects.html";
   }
 
   @PostMapping("/projects/{id}/activate")
   String activateProject(@PathVariable("id") Long projectId) {
     changeProjectStatusUseCase.activateProject(ProjectId.of(projectId));
-    return "redirect:/projects/list";
+    return "redirect:/projects";
   }
 
   @PostMapping("/projects/{id}/deactivate")
   String deactivateProject(@PathVariable("id") Long projectId) {
     changeProjectStatusUseCase.deactivateProject(ProjectId.of(projectId));
-    return "redirect:/projects/list";
+    return "redirect:/projects";
   }
 
 }

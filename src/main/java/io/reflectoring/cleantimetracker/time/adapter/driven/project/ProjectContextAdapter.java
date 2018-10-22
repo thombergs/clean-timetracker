@@ -39,4 +39,9 @@ public class ProjectContextAdapter implements QueryTasksPort {
     }
   }
 
+  @Override
+  public List<TimeTrackingTask> listAllTasks() {
+    return taskMapper.toTimeTrackingTasks(timeContextAdapter.listAll());
+  }
+
 }

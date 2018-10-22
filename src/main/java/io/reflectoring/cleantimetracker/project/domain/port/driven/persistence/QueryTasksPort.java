@@ -15,4 +15,5 @@ public interface QueryTasksPort {
 
   List<Task> listByIds(List<TaskId> taskIds);
 
+  List<Task> listAllTasks();
 }

@@ -11,13 +11,17 @@ import javax.persistence.Table;
 import java.time.LocalDate;
 
 import io.reflectoring.cleantimetracker.time.domain.entity.TimeRecordStatus;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "TIME_RECORD")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TimeRecordEntity {
 
   @Id

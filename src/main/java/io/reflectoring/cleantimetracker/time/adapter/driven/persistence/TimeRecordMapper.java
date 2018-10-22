@@ -16,7 +16,7 @@ public class TimeRecordMapper {
             .minutes(entity.getMinutes())
             .date(entity.getDate())
             .taskId(entity.getTaskId())
-            .id(TimeRecordId.of(entity.getId()))
+            .id(entity.getId() == null ? null : TimeRecordId.of(entity.getId()))
             .build();
   }
 
@@ -34,7 +34,7 @@ public class TimeRecordMapper {
             .minutes(domainObject.getMinutes())
             .date(domainObject.getDate())
             .taskId(domainObject.getTaskId())
-            .id(domainObject.getId().getValue())
+            .id(domainObject.getId() == null ? null : domainObject.getId().getValue())
             .build();
   }
 

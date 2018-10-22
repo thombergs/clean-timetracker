@@ -35,6 +35,10 @@ public class ListTimeRecordsUseCase {
     return expandTasks(timeRecords);
   }
 
+  public List<TimeTrackingTask> listAllTasks() {
+    return queryTasksPort.listAllTasks();
+  }
+
   /**
    * Expands the task ID in a set of {@link TimeRecord}s to the real Task data. This is necessary since
    * the Task data is loaded from another bounded context.
