@@ -1,34 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
 
-<h1>Projekte</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Nummer</th>
-        <th>Name</th>
-        <th>Status</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="project : ${projects}">
-        <td th:text="${project.id}"></td>
-        <td th:text="${project.name}"></td>
-        <td th:text="${project.status}"></td>
-        <td>
-            <form th:if="${!project.isActive()}" action="#" th:action="@{/projects/{projectId}/activate(projectId=${project.id})}" method="post">
-                <input type="submit" value="Activate"/>
-            </form>
-            <form th:if="${project.isActive()}" action="#" th:action="@{/projects/{projectId}/deactivate(projectId=${project.id})}" method="post">
-                <input type="submit" value="Deactivate"/>
-            </form>
-            <a th:href="@{/projects/{id}(id=${project.id})}">Details</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<section class="content" layout:fragment="content">
 
-<a th:href="@{/projects/create}">Create new Project</a>
+    <div class="box">
+        <div class="box-header with-border">
+            <h3>Manage Projects</h3>
+            <small>Manage the projects for which you want to track your time.</small>
+        </div>
+        <div class="box-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th style="width:10px">ID</th>
+                    <th>Name</th>
+                    <th style="width:50px">Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="project : ${projects}">
+                    <td th:text="${project.id}"></td>
+                    <td th:text="${project.name}"></td>
+                    <td th:text="${project.status}"></td>
+                    <td>
+                        <a class="btn btn-default" th:href="@{/projects/{id}(id=${project.id})}">Details</a>
+                        <form th:if="${!project.isActive()}" action="#"
+                              th:action="@{/projects/{projectId}/activate(projectId=${project.id})}"
+                              method="post" class="display: inline">
+                            <input type="submit" class="btn btn-default" value="Activate"/>
+                        </form>
+                        <form th:if="${project.isActive()}" action="#"
+                              th:action="@{/projects/{projectId}/deactivate(projectId=${project.id})}"
+                              method="post" class="display: inline">
+                            <input type="submit" class="btn btn-default" value="Deactivate"/>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</section>
+
+</body>
 
 </html>

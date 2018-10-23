@@ -1,52 +1,96 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<body>
 
-<h1>Project Details: <span th:text="${project.name}">PROJECT NAME</span></h1>
+<section class="content" layout:fragment="content">
 
-<a th:href="@{/projects}">Back to projects list</a>
+    <div class="box">
+        <div class="box-header with-border">
+            <h3>Details of Project "<span th:text="${project.name}">PROJECT NAME</span>"</h3>
+        </div>
+        <div class="box-body">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Project ID</label>
+                <span th:text="${project.id}"></span>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Project Status</label>
+                <span th:text="${project.status}"></span>
+            </div>
+        </div>
+    </div>
 
-<p>Project ID: <span th:text="${project.id}">ID</span></p>
-<p>Project status: <span th:text="${project.status}">STATUS</span></p>
+    <div class="box">
+        <div class="box-header with-border">
+            <h3>Project Tasks</h3>
+        </div>
+        <div class="box-body">
 
-<h2>Tasks</h2>
+            These are the tasks you can track time for.
 
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Invoiceable</th>
-        <th>Status</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="task : ${project.getTasks()}">
-        <td th:text="${task.name}"></td>
-        <td th:text="${task.invoiceable}"></td>
-        <td th:text="${task.status}"></td>
-        <td>
-            <form th:if="${!task.isActive()}" action="#" th:action="@{/projects/{projectId}/tasks/{taskId}/activate(projectId=${project.id}, taskId=${task.id})}" method="post">
-                <input type="submit" value="Activate"/>
-            </form>
-            <form th:if="${task.isActive()}" action="#" th:action="@{/projects/{projectId}/tasks/{taskId}/deactivate(projectId=${project.id}, taskId=${task.id})}" method="post">
-                <input type="submit" value="Deactivate"/>
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Invoiceable</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="task : ${project.getTasks()}">
+                    <td th:text="${task.name}"></td>
+                    <td th:text="${task.invoiceable}"></td>
+                    <td th:text="${task.status}"></td>
+                    <td>
+                        <form th:if="${!task.isActive()}" action="#"
+                              th:action="@{/projects/{projectId}/tasks/{taskId}/activate(projectId=${project.id}, taskId=${task.id})}"
+                              method="post">
+                            <input type="submit" value="Activate" class="btn btn-default"/>
+                        </form>
+                        <form th:if="${task.isActive()}" action="#"
+                              th:action="@{/projects/{projectId}/tasks/{taskId}/deactivate(projectId=${project.id}, taskId=${task.id})}"
+                              method="post">
+                            <input type="submit" value="Deactivate" class="btn btn-default"/>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<h2>Add Task</h2>
-<form action="#" th:action="@{/projects/{id}/add-task(id=${project.id})}" th:object="${addTaskForm}" method="post">
-    <label>
-        Name:
-        <input type="text" th:field="*{name}"/>
-    </label>
-    <label>
-        Invoiceable:
-        <input type="checkbox" th:field="*{invoiceable}" th:value="invoiceable"/>
-    </label>
-    <input type="submit" value="Add Task"/>
-</form>
+    <div class="box">
+        <div class="box-header with-border">
+            <h3>Add Task</span></h3>
+            <small>Add a new task to this project.</small>
+        </div>
+
+        <form action="#" th:action="@{/projects/{id}/add-task(id=${project.id})}" th:object="${addTaskForm}"
+              method="post">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="name" class="col-sm-2">Name</label>
+                    <div class="col-sm-10">
+                        <input id="name" type="text" th:field="*{name}"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input id="invoiceable" type="checkbox" th:field="*{invoiceable}" th:value="invoiceable"/>
+                    Invoiceable
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <input type="submit" value="Add Task" class="btn btn-default"/>
+            </div>
+
+        </form>
+    </div>
+
+</section>
+</body>
 
 </html>

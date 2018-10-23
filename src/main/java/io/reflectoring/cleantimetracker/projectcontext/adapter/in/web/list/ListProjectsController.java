@@ -27,7 +27,7 @@ class ListProjectsController {
     this.changeProjectStatusUseCase = changeProjectStatusUseCase;
   }
 
-  @GetMapping("/projects")
+  @GetMapping(path = {"/projects", "/"})
   String displayProjectsList(Model model) {
     List<Project> projects = listProjectsUseCase.listProjects();
     List<ProjectListModel> projectListModels = projectListModelMapper.toModels(projects);

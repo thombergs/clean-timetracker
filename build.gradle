@@ -30,6 +30,7 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web')
 	implementation('javax.xml.bind:jaxb-api:2.3.1')
 	implementation('org.javassist:javassist:3.23.1-GA')
+	implementation('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.3.0')
 	runtimeOnly('com.h2database:h2')
 	compileOnly('org.projectlombok:lombok:1.18.2')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')

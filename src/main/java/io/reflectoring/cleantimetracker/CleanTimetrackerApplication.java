@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class CleanTimetrackerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CleanTimetrackerApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(CleanTimetrackerApplication.class, args);
+  }
+
 }
