@@ -1,6 +1,6 @@
 package io.reflectoring.cleantimetracker.projectcontext.adapter.out.persistence;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import java.util.ArrayList;
 import java.util.List;
