@@ -1,6 +1,6 @@
 package io.reflectoring.cleantimetracker.projectcontext.domain.usecase.addtask;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 import java.util.Optional;
 

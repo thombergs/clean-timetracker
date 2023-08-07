@@ -1,6 +1,6 @@
 package io.reflectoring.cleantimetracker.projectcontext.adapter.out.persistence;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import io.reflectoring.cleantimetracker.projectcontext.domain.entity.Project;
 import io.reflectoring.cleantimetracker.projectcontext.domain.entity.ProjectId;

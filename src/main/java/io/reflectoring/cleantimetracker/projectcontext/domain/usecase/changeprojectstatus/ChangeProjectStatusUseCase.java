@@ -1,6 +1,6 @@
 package io.reflectoring.cleantimetracker.projectcontext.domain.usecase.changeprojectstatus;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 import java.util.Optional;
 
