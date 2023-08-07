@@ -11,27 +11,31 @@ java {
     sourceCompatibility = '17'
 }
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'javax.xml.bind:jaxb-api:2.3.1'
+    implementation 'org.javassist:javassist:3.29.2-GA'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.2.1'
+    runtimeOnly 'com.h2database:h2'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-test {
-	useJUnitPlatform()
-}
-
-bootRun {
-	jvmArgs = [
-			"-XX:TieredStopAtLevel=1",
-			"-noverify",
-			"-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
-	]
-
+tasks.named('test') {
+    useJUnitPlatform()
 }
